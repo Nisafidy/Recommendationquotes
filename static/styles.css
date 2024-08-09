@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url('../static/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.center-content {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.vintage-label {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background: #f4e1d2;
+    border: 2px solid #d4a373;
+    border-radius: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+    color: #333;
+}
+
+.vintage-button {
+    padding: 10px 20px;
+    background: #d4a373;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.vintage-button:hover {
+    background: #b08968;
+}
+
+#recommendations {
+    margin-top: 20px;
+}
+

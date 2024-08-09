@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Recommendation</title>
+
+    <!-- Link to the external CSS file for styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="center-content">
+            <label for="number" class="vintage-label">Enter Number of Recommendations:</label>
+            <form id="recommendForm">
+                <input type="number" id="number" name="number" min="1" value="5">
+                <button type="submit" class="vintage-button">Get Recommendations</button>
+            </form>
+            <div id="recommendations"></div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('recommendForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const number = document.getElementById('number').value;
+            fetch('/recommend', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ n: number })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const recommendationsDiv = document.getElementById('recommendations');
+                recommendationsDiv.innerHTML = '';
+                data.forEach(quote => {
+                    const quoteElement = document.createElement('p');
+                    quoteElement.textContent = `"${quote.text}" - ${quote.author}`;
+                    recommendationsDiv.appendChild(quoteElement);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
